@@ -6,6 +6,8 @@ import QuizBackground from '../src/components/QuizBackground'
 import Footer from '../src/components/Footer'
 import GitHubCorner from '../src/components/GitHubCorner'
 
+import Head from 'next/head';
+
 // const BackgroundImage = styled.div`
 //   background-image: url(${db.bg});
 //   flex: 1;
@@ -26,28 +28,37 @@ export const QuizContainer = styled.div`
 
 export default function Home() {
   return (
-    <QuizBackground backgroundImage={db.bg}>
-      <QuizContainer>
-        <QuizLogo />
-        <Widget>
-          <Widget.Header>
-            <h1>{db.title}</h1>
-          </Widget.Header>
-          <Widget.Content>
-            <p>{db.description}</p>
-          </Widget.Content>
-        </Widget>
+    <>
+      <Head>
+        <title>{db.title}</title>
+        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+        <meta property="og:image" content={db.bg} />
+        <meta property="og:description" content={db.description} />
+        <meta property="og:title" content={db.title} />
+      </Head>
+      <QuizBackground backgroundImage={db.bg}>
+        <QuizContainer>
+          <QuizLogo />
+          <Widget>
+            <Widget.Header>
+              <h1>{db.title}</h1>
+            </Widget.Header>
+            <Widget.Content>
+              <p>{db.description}</p>
+            </Widget.Content>
+          </Widget>
 
-        <Widget>
-          <Widget.Content>
-            <h1>Quizes da Galera</h1>
+          <Widget>
+            <Widget.Content>
+              <h1>Quizes da Galera</h1>
 
-            <p>lorem ipsum dolor sit amet...</p>
-          </Widget.Content>
-        </Widget>
-        <Footer />
-      </QuizContainer>
-      <GitHubCorner projectUrl="https://github.com/omariosouto" />
-    </QuizBackground>
+              <p>lorem ipsum dolor sit amet...</p>
+            </Widget.Content>
+          </Widget>
+          <Footer />
+        </QuizContainer>
+        <GitHubCorner projectUrl="https://github.com/omariosouto" />
+      </QuizBackground>
+    </>
   );
 }
